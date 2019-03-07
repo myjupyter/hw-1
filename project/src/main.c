@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #include "utils.h"
+#include "module.h"
 
 #define ERR_ARGS_COUNT (-1)
 #define ERR_WRONG_FLG (-2)
@@ -31,37 +32,32 @@ int main(int argc, const char** argv) {
         return ERR_ARGS_COUNT;
     }
 
-    int test_case = atoi(argv[1]);
-    const char* data;
-    data = argv[2];
+    const char* data = argv[2];
+	char* end = NULL;
+    int test_case = (int) strtol(argv[1], &end, 0);
 
     switch (test_case) {
         case TST_FOO_FIX: {
-            size_t res = custom_strlen(data);
-            printf("%zu\n", res);
+            printf("%zu\n", custom_strlen(data));
             break;
         }
         case TST_FOO_IMPL: {
             if (argc != 4) {
                 return ERR_ARGS_COUNT;
             }
-            /* Comment to prevent `unused parameter` error
-            int base = atoi(data);
-            int pow =  atoi(argv[3]);
-            int res = custom_pow(base, pow);    // TODO: Implement me
+    
+			int base = atoi(data);
+            int pow = atoi(argv[3]);
+            int res = custom_pow(base, pow);
 
             printf("%i\n", res);
-            */
             break;
         }
         case TST_MOD_IMPL: {
-            // Comment for prevent `unused variable` error
-            // int num = atoi(data);
+            int num = atoi(data);
 
-            // TODO: Print to stdout `1` if `num` is prime number and `0` otherwise
-            // This function MUST be implemented in
-            // a separate C-module (not in `main` or `utils` module)
-            break;
+            printf("%i\n", is_prime(num));
+			break;
         }
         default: {
             return ERR_WRONG_FLG;
