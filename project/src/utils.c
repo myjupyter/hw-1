@@ -1,16 +1,16 @@
 #include "utils.h"
 
 const char MASTER_WRITE_MENU[] = "1 Number account:\n"
-                             "2 Client name:\n"
-                             "3 Surname:\n"
-                             "4 Addres client:\n"
-                             "5 Client Telnum:\n"
-                             "6 Client indebtedness:\n"
-                             "7 Client credit limit:\n"
-                             "8 Client cash payments:\n";
+                                 "2 Client name:\n"
+                                 "3 Surname:\n"
+                                 "4 Addres client:\n"
+                                 "5 Client Telnum:\n"
+                                 "6 Client indebtedness:\n"
+                                 "7 Client credit limit:\n"
+                                 "8 Client cash payments:\n";
 
 
-void masterWrite(FILE *ofPTR, Data Client) {
+void masterWrite(FILE * restrict ofPTR, Data Client) {
     printf("%s", MASTER_WRITE_MENU);
 
     while (scanf("%d%19s%19s%29s%14s%lf%lf%lf", &Client.Number, Client.Name,
@@ -27,8 +27,8 @@ void masterWrite(FILE *ofPTR, Data Client) {
 }
 
 
-void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord,
-                 Data client_data, Data transfer) {
+void blackRecord(FILE * restrict ofPTR, FILE * restrict ofPTR_2,
+                 FILE * restrict blackrecord, Data client_data, Data transfer) {
     while (fscanf(ofPTR, "%d%19s%19s%29s%14s%lf%lf%lf", &client_data.Number,
                   client_data.Name, client_data.Surname, client_data.addres,
                   client_data.TelNumber, &client_data.indebtedness,
@@ -48,7 +48,7 @@ void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord,
     }
 }
 
-void transactionWrite(FILE *ofPtr, Data transfer) {
+void transactionWrite(FILE * restrict ofPtr, Data transfer) {
     printf("%s\n%s\n", "1 Number account: ", "2 Client cash payments: ");
 
     while (scanf("%d %lf", &transfer.Number, &transfer.cash_payments) != -1) {

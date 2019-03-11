@@ -4,11 +4,11 @@
 #include <stdio.h>
 #include "data.h"
 
-void masterWrite(FILE *ofPTR, Data Client);
+void masterWrite(FILE * restrict ofPTR, Data Client);
 
-void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord,
-                 Data client_data, Data transfer);
+void blackRecord(FILE * restrict ofPTR, FILE * restrict ofPTR_2,
+                 FILE * restrict blackrecord, Data client_data, Data transfer);
 
-void transactionWrite(FILE *ofPtr, Data transfer);
+void transactionWrite(FILE * restrict ofPtr, Data transfer);
 
 #endif  // PROJECT_INCLUDE_UTILS_H_
